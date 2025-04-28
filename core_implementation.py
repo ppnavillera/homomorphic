@@ -132,8 +132,6 @@ class MusicRevenueAnalyzer:
             # 상수 1.0은 complex 타입으로 전달되어야 함 (파이썬 float가 보통 호환됨)
             # mult_plain 대신 mult 사용
             self.eval.mult(filtered_data[0], 1.0, sum_data)
-        else:
-            print("초기화할 데이터가 없습니다.")
 
         # 나머지 데이터 합산 (add 사용)
         for i in range(1, num_filtered):
