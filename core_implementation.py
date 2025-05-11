@@ -1,8 +1,6 @@
 import piheaan as heaan
 import numpy as np
-# import pandas as pd # pandas는 현재 코드에서 사용되지 않으므로 주석 처리
 import os
-# import json # json은 현재 코드에서 사용되지 않으므로 주석 처리
 
 
 class MusicRevenueAnalyzer:
@@ -27,13 +25,13 @@ class MusicRevenueAnalyzer:
         print("Context 설정 중...")
         self.params = heaan.ParameterPreset.FGb
         self.context = heaan.make_context(self.params)
-        # 부트스트래핑 가능하게 설정 (필요시)
-        # make_bootstrappable은 더 많은 연산을 가능하게 하지만, 초기 설정 시간이 길어질 수 있음
-        try:
-            heaan.make_bootstrappable(self.context)
-            print("Context가 부트스트래핑 가능하게 설정되었습니다.")
-        except Exception as e:
-            print(f"부트스트래핑 설정 중 오류 (무시하고 진행): {e}")
+        # # 부트스트래핑 가능하게 설정 (필요시)
+        # # make_bootstrappable은 더 많은 연산을 가능하게 하지만, 초기 설정 시간이 길어질 수 있음
+        # try:
+        #     heaan.make_bootstrappable(self.context)
+        #     print("Context가 부트스트래핑 가능하게 설정되었습니다.")
+        # except Exception as e:
+        #     print(f"부트스트래핑 설정 중 오류 (무시하고 진행): {e}")
 
         # 디렉토리 생성
         os.makedirs(self.key_dir, mode=0o775, exist_ok=True)
@@ -126,8 +124,6 @@ class MusicRevenueAnalyzer:
             # 첫 번째 데이터로 합계 초기화
         sum_data = heaan.Ciphertext(self.context)
         if filtered_data:  # 필터링된 데이터가 있을 경우에만 초기화 수행
-            # self.eval.mult_plain(filtered_data[0], 1.0, sum_data) # <-- 이전 수정 코드 주석 처리 또는 삭제
-
             # 아래 코드로 대체: mult 함수를 사용하여 상수 1.0을 곱함
             # 상수 1.0은 complex 타입으로 전달되어야 함 (파이썬 float가 보통 호환됨)
             # mult_plain 대신 mult 사용
